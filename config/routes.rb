@@ -1,9 +1,14 @@
 GrammarBrushstrokes::Application.routes.draw do
-  get "grammar_pages/active"
-  get "grammar_pages/participles"
-  get "grammar_pages/absolutes"
-  get "grammar_pages/appositives"
-  get "grammar_pages/adjectives"
+  root  'grammar_pages#home'
+  match '/active',    to: 'grammar_pages#active',    via: 'get'
+  match '/participles',   to: 'grammar_pages#participles',   via: 'get'
+  match '/absolutes', to: 'grammar_pages#absolutes', via: 'get'
+  
+  match '/appositives', to: 'grammar_pages#appositives', via: 'get'
+  match '/adjectives', to: 'grammar_pages#adjectives', via: 'get'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
