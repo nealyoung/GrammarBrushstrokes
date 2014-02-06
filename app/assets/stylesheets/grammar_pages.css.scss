@@ -2,14 +2,89 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body
+{
+  background-image: image-url("knitting250px.png");
+}
+
+
+.container, .jumbotron
+{
+  background-color: white;
+}
+
+
+
+.inline-blurb
+{
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 6px;
+  background-color: #fbfbfb;
+  line-height: 1.4;
+  padding: 20px;
+  font-family: Georgia, Garamond;
+  color: #383838;
+  font-size: 19px;
+
+}
+
+
+
+
+/* Font styles */
+.nav
+{
+  font-family: Georgia;
+  font-size: 13pt;
+}
+h1
+{
+  font-family: Georgia, Garamond;
+}
+
+h2 
+{
+  font-family: Georgia, Garamond;
+}
+
+/* Navigation Styles */
+.navbar
+{
+  margin-top: 30px;
+  background-image: none;
+  box-shadow: none;
+  background-color: #FFFFFF;
+}
+
+.navbar-default {
+  background-color: none;
+  border: none;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: #6997D3;
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000000;
+}
+
+
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: #E7E7E7;
+  color: #555555;
+}
 
 #logo {
+  font-family: Georgia;
   float: left;
   padding-left: 25px;
     padding-right: 25px;
-  font-size: 1.7em;
+  font-size: 2.0em;
   color: #000000;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
