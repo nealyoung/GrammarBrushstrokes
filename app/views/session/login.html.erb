@@ -8,7 +8,7 @@
       <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
       <%= f.submit :Signup %>
   <% end %>
-  <% if @user.errors.any? %>
+  <% if @user && @user.errors.any? %>
       <ul class="Signup_Errors">
         <% for message_error in @user.errors.full_messages %>
             <li>* <%= message_error %></li>

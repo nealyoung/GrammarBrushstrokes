@@ -1,13 +1,23 @@
 GrammarBrushstrokes::Application.routes.draw do
-  root  'grammar_pages#home'
-  match '/active',    to: 'grammar_pages#active',    via: 'get'
-  match '/participles',   to: 'grammar_pages#participles',   via: 'get'
+  #get "users/new"
+  #root  'grammar_pages#home'
+  #root  :to => "grammar_pages#home"
+
+  #root 'session#login'
+  root :to => "session#login"
+
+  match '/active', to: 'grammar_pages#active', via: 'get'
+  match '/activesubmit', to: 'grammar_pages#activesubmit', via: 'get'
+  match '/participles', to: 'grammar_pages#participles', via: 'get'
   match '/absolutes', to: 'grammar_pages#absolutes', via: 'get'
-  
   match '/appositives', to: 'grammar_pages#appositives', via: 'get'
   match '/adjectives', to: 'grammar_pages#adjectives', via: 'get'
 
+  resources :users do
+    post :login, on: :collection, as: :login
+  end
 
+  # match '/login', to: 'session#login', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
