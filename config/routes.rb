@@ -8,6 +8,7 @@ GrammarBrushstrokes::Application.routes.draw do
 
   match '/active', to: 'grammar_pages#active', via: 'get'
   match '/activesubmit', to: 'grammar_pages#activesubmit', via: 'get'
+  match '/activereview', to: 'grammar_pages#activereview', via: 'get'
   match '/participles', to: 'grammar_pages#participles', via: 'get'
   match '/absolutes', to: 'grammar_pages#absolutes', via: 'get'
   match '/appositives', to: 'grammar_pages#appositives', via: 'get'
