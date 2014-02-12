@@ -12,6 +12,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
 
 # Add Boostrap
