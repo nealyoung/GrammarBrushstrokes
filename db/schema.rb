@@ -11,7 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204014024) do
+ActiveRecord::Schema.define(version: 20140212184131) do
+
+  create_table "categories", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "image_url"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "responses", force: true do |t|
+    t.string   "sentence1"
+    t.string   "sentence2"
+    t.string   "sentence3"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.integer  "reviewer_id"
+    t.string   "revised_sentence1"
+    t.string   "revised_sentence2"
+    t.string   "revised_sentence3"
+    t.integer  "best_sentence"
+    t.integer  "worst_sentence"
+    t.string   "best_sentence_feedback"
+    t.string   "worst_sentence_feedback"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
@@ -20,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140204014024) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
+    t.string   "role"
   end
 
 end

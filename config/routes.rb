@@ -6,6 +6,7 @@ GrammarBrushstrokes::Application.routes.draw do
   #root 'session#login'
   root :to => "session#login"
 
+  resources :categories, only: [:show]
   match '/active', to: 'grammar_pages#active', via: 'get'
   match '/activesubmit', to: 'grammar_pages#activesubmit', via: 'get'
   match '/activereview', to: 'grammar_pages#activereview', via: 'get'
@@ -13,10 +14,15 @@ GrammarBrushstrokes::Application.routes.draw do
   match '/absolutes', to: 'grammar_pages#absolutes', via: 'get'
   match '/appositives', to: 'grammar_pages#appositives', via: 'get'
   match '/adjectives', to: 'grammar_pages#adjectives', via: 'get'
-
+  
   resources :users do
     post :login, on: :collection, as: :login
   end
+  
+  # Sessions
+  get 'log_in' => 'sessions#new', :as => 'log_in'
+  post 'validate_user' => 'sessions#create', :as => 'validate_user'
+  get 'log_out' => 'sessions#destroy', :as => 'log_out'
 
   # match '/login', to: 'session#login', via: 'get'
 
