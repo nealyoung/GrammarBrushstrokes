@@ -1,6 +1,6 @@
 GrammarBrushstrokes::Application.routes.draw do
   root :to => 'grammar_pages#home'
-
+  
   resources :categories, only: [:show]
   
   match '/active', to: 'grammar_pages#active', via: 'get'

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Category.create(title: 'Active Verbs')
+Category.create(title: 'Participles')
+Category.create(title: 'Absolutes')
+Category.create(title: 'Appositives')
+Category.create(title: 'Adjectives out of Order')

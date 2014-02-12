@@ -39,6 +39,8 @@ end
  gem 'bcrypt-ruby', '~> 3.1.2'
  
  gem 'awesome_print'
+ 
+ gem 'pg'
 
 # Use unicorn as the app server
 # gem 'unicorn'
