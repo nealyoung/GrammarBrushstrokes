@@ -1,12 +1,8 @@
 GrammarBrushstrokes::Application.routes.draw do
-  #get "users/new"
-  #root  'grammar_pages#home'
-  #root  :to => "grammar_pages#home"
-
-  #root 'session#login'
-  root :to => "session#login"
+  root :to => 'grammar_pages#home'
 
   resources :categories, only: [:show]
+  
   match '/active', to: 'grammar_pages#active', via: 'get'
   match '/activesubmit', to: 'grammar_pages#activesubmit', via: 'get'
   match '/activereview', to: 'grammar_pages#activereview', via: 'get'
