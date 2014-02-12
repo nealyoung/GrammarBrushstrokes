@@ -1,15 +1,16 @@
 <% content_for :title do %>Login<% end %>
 
 <%= form_tag validate_user_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username, params[:username] %>
+  <div class="form-group">
+    <%= label_tag :username %>
+    <%= text_field_tag :username, params[:username] %>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
 
-  <%= submit_tag "Log In", :class => 'btn btn-small btn-inverse' %>
+    <%= submit_tag "Log In", :class => 'btn btn-small btn-inverse' %>
   
-  <span class="pull-right" id="sign-up-link">
-    Need an account? <%= link_to "Sign up", new_user_path %>
-  </span>
+    <span class="pull-right" id="sign-up-link">
+      Need an account? <%= link_to "Sign up", new_user_path %>
+    </span>
 <% end %>
