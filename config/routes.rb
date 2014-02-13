@@ -1,15 +1,7 @@
 GrammarBrushstrokes::Application.routes.draw do
-  root :to => 'grammar_pages#home'
+  root :to => 'home#show'
   
   resources :categories, only: [:show]
-  
-  match '/active', to: 'grammar_pages#active', via: 'get'
-  match '/activesubmit', to: 'grammar_pages#activesubmit', via: 'get'
-  match '/activereview', to: 'grammar_pages#activereview', via: 'get'
-  match '/participles', to: 'grammar_pages#participles', via: 'get'
-  match '/absolutes', to: 'grammar_pages#absolutes', via: 'get'
-  match '/appositives', to: 'grammar_pages#appositives', via: 'get'
-  match '/adjectives', to: 'grammar_pages#adjectives', via: 'get'
   
   resources :users do
     post :login, on: :collection, as: :login

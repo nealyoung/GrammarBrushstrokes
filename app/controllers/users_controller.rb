@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = 'student'
     
     if @user.save
       flash[:notice] = "Thanks for signing up, #{@user.first_name}. Please log in below."
@@ -16,6 +17,10 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages.first
       render "new"
     end
+  end
+  
+  def destroy
+    
   end
 
   private
