@@ -11,3 +11,6 @@ Category.create(title: 'Participles', description: 'Participles description goes
 Category.create(title: 'Absolutes', description: 'Absolutes description goes here')
 Category.create(title: 'Appositives', description: 'Appositives description goes here')
 Category.create(title: 'Adjectives Out of Order', description: 'Adjectives out of order description goes here')
+
+Question.create(image_url: 'http://i.imgur.com/8ooDsfF.png' category_id: 1, good_example: 'Good example goes here', bad_example: 'Bad example goes here')
+Question.create(image_url: 'http://i.imgur.com/138UxHv.png' category_id: 2, good_example: 'Good example goes here', bad_example: 'Bad example goes here')
