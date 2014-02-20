@@ -3,4 +3,4 @@
 <hr>
 
 <p><%= @category.description %></p>
-<%= link_to new_response_path %>
+<%= link_to 'Respond', new_response_path(category_id: @category.id) %>
