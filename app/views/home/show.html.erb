@@ -2,12 +2,51 @@
 
 <hr>
 
-<h3>Your Responses</h3>
-<p> User responses here.</p>
-<p> Incomplete </p>
-<p> Completed </p>
+<h4>Students</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Responses</th>
+      <th>Reviews</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Neal</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Bafd</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
-<h3>Classmate Responses</h3>
-<p> Classmate responses here.</p>
-<p> Caption to picture </p>
-<p> Classmate responses w/ downvote/upvote </p>
+<br>
+
+<% if @current_user.role == 'teacher' %>
+  <span class="section-header">Admin</span>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="well well-sm">
+        <h4>Download Responses</h4>
+        <p>this is p dangerous</p>
+        <button type="button" class="btn btn-info btn-lg">Download PDF</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="well well-sm">
+        <h4>Delete Responses</h4>
+        <p>Delete all responses</p>
+        <button type="button" class="btn btn-danger btn-lg">Delete</button>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  

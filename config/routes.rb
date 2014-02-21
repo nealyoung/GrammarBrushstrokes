@@ -2,6 +2,7 @@ GrammarBrushstrokes::Application.routes.draw do
   root :to => 'home#show'
   
   resources :responses, only: [:new, :create]
+  get 'responses/review' => 'responses#review'
   resources :categories, only: [:show]
   
   resources :users do
