@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def is_teacher?
     return role == 'teacher'
   end
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

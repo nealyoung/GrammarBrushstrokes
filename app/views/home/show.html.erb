@@ -47,6 +47,31 @@
     </div>
   </div>
 <% else %>
-  <%= link_to 'Peer Review', review_response_path, class: 'btn btn-info btn-lg' %>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<h3>Responses</h3>
+			<h4>Here's a list</h4>
+			<ul class="list-group">
+			  <li class="list-group-item">Cras justo odio</li>
+			  <li class="list-group-item">Dapibus ac facilisis in</li>
+			  <li class="list-group-item">Morbi leo risus</li>
+			  <li class="list-group-item">Porta ac consectetur ac</li>
+			  <li class="list-group-item">Vestibulum at eros</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="col-md-6">
+		<div class="well">
+			<h3>Peer Review</h4>
+			<p>Review repsonses your classmates have submitted! Don't forget to give constructive criticism when picking both the worst and best sentence. Figuras titan. Sive tollere toto mutastis alto. Zonae quanto cornua poena nix onus inposuit caelum ab. Non deus inposuit. Sed diverso liquidas duris elementaque lumina. Recessit instabilis liberioris ad tanto habendum proxima valles cetera caecoque.'</p>
+      <%= link_to 'Peer Review', review_response_path, class: 'btn btn-info btn-lg' %>
+		</div>
+	</div>
+
+
+</div>
 <% end %>
   
