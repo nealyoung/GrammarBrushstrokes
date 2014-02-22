@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     @user.role = 'student'
     
     if @user.save
-      flash[:notice] = "Thanks for signing up, #{@user.first_name}. Please log in below."
-      redirect_to log_in_path
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Thanks for signing up, #{@user.first_name}. Please log in below."
     else
       flash[:error] = @user.errors.full_messages.first
       render "new"
