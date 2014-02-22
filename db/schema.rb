@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140222030123) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "example1"
+	t.string   "example1"
     t.string   "example2"
     t.string   "good_example"
     t.string   "bad_example"
