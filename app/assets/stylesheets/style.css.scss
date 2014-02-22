@@ -18,8 +18,7 @@
   {
     font-weight: 500;
     color:white;
-    
-    
+
   }
   
 }
@@ -34,4 +33,11 @@
 .navbar-default .navbar-nav > li > a:hover
 {
  color:white; 
+}
+
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus
+{
+	color: white;
+    background-color: #3B4D5B;
 }
