@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
   
   def is_teacher?
-     
+    return role == 'teacher'
   end
 end

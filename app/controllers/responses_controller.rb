@@ -5,6 +5,8 @@ class ResponsesController < ApplicationController
     if incomplete_responses.any?
       flash[:alert] = 'You need to complete a previously started response'
       @response = incomplete_responses.take
+      
+      puts @response
     else
       @response = Response.new
       @response.user = @current_user
@@ -12,7 +14,7 @@ class ResponsesController < ApplicationController
       @response.question = questions_in_category.first(offset: rand(questions_in_category.count))
     
       @response.save
-    end
+    end    
   end
 
   def update
@@ -30,13 +32,13 @@ class ResponsesController < ApplicationController
   end
   
   def review
-    # Find responses awaiting review that do not belong to the current user
-    @response = Response.where('user_id != ?', @current_user.id).first
+    # Find responses awaiting review that do not belong to the current user and have not been reviewed yet
+    @response = Response.where('user_id != ? AND reviewer_id = ?', @current_user.id, nil).first
     
     if @response.nil?
       redirect_to root_path, notice: 'There are no responses to review at this time'
     else
-      # Assign the current user as the reviewer 
+      # Assign the current user as the reviewer
       @response.reviewer_id = @current_user.id
     end
   end
