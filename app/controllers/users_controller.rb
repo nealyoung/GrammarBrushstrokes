@@ -19,6 +19,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def show
+    if !@current_user.is_teacher?
+      redirect_to root_path, notice: "Not authorized"
+    end
+    
+    @user = User.find(params[:id])
+  end
+  
   def destroy
     
   end
