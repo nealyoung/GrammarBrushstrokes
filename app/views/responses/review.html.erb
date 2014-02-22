@@ -1,4 +1,4 @@
-<h1><%= @response.question.category.title %> Exercise</h1>
+<h1><%= @response.question.category.title %> Peer Review</h1>
 
 <hr>
 
@@ -6,22 +6,27 @@
 
 <hr>
 
-  
-  
-  
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="badge">A</span>
+    <span class="badge">Sentence A</span>
     <%= @response.sentence1 %>
   </li>
-</ul>  
   
-
+  <li class="list-group-item">
+    <span class="badge">Sentence B</span>
+    <%= @response.sentence2 %>
+  </li>
+  
+  <li class="list-group-item">
+    <span class="badge">Sentence C</span>
+    <%= @response.sentence3 %>
+  </li>
+</ul>
 
 <hr>
 
 <%= form_for @response do |f| %>
-  <h3>Now, you try!</h3>
+  <h3>Peer Review</h3>
   
   <div class="well well-small">
     <% if @response.errors.any? %>
@@ -36,18 +41,25 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label 'Sentence 1' %>
-      <%= f.text_field :sentence1, class: 'form-control' %>
+      <%= f.label 'What was the best sentence?' %>
+      <%= f.select :best_sentence, ['Sentence A', 'Sentence B', 'Sentence C'] %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label 'Why did you think this was the best sentence?' %>
+      <%= f.text_field :best_sentence_feedback, class: 'form-control' %>
     </div>
 
+    <hr>
+    
     <div class="form-group">
-      <%= f.label 'Sentence 2' %>
-      <%= f.text_field :sentence2, class: 'form-control' %>
+      <%= f.label 'What was the worst sentence?' %>
+      <%= f.select :worst_sentence, ['Sentence A', 'Sentence B', 'Sentence C'] %>
     </div>
-
+    
     <div class="form-group">
-      <%= f.label 'Sentence 3' %>
-      <%= f.text_field :sentence3, class: 'form-control' %>
+      <%= f.label 'Why did you think this was the worst sentence?' %>
+      <%= f.text_field :worst_sentence_feedback, class: 'form-control' %>
     </div>
 
     <%= f.submit 'Submit', :class => 'btn btn-default' %>

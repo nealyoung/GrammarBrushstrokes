@@ -2,51 +2,51 @@
 
 <hr>
 
-<h4>Students</h4>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Responses</th>
-      <th>Reviews</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Neal</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>Bafd</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
 <% if @current_user.role == 'teacher' %>
+  <h4>Students</h4>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Responses</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Neal</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Bafd</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
   <span class="section-header">Admin</span>
 
   <hr>
 
   <div class="row">
     <div class="col-md-6">
-      <div class="well well-sm">
+      <div class="well well-sm text-center">
         <h4>Download Responses</h4>
-        <p>this is p dangerous</p>
+        <p>Generate a PDF file containing the responses from students in your class</p>
         <button type="button" class="btn btn-info btn-lg">Download PDF</button>
       </div>
     </div>
     <div class="col-md-6">
-      <div class="well well-sm">
+      <div class="well well-sm text-center">
         <h4>Delete Responses</h4>
-        <p>Delete all responses</p>
-        <button type="button" class="btn btn-danger btn-lg">Delete</button>
+        <p>Permanently delete all responses from students in your class</p>
+        <button type="button" class="btn btn-danger btn-lg">Delete All</button>
       </div>
     </div>
   </div>
-  <% end %>
+<% else %>
+  <%= link_to 'Peer Review', review_response_path, class: 'btn btn-default' %>
+<% end %>
   
