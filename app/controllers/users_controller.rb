@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    if !@current_user.is_teacher?
+    if @current_user.is_teacher?
       redirect_to root_path, notice: "Not authorized"
     end
     
