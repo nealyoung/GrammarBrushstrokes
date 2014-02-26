@@ -31,6 +31,15 @@ class UsersController < ApplicationController
     
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.new(user_params)
+    redirect_to root_path, notice: "Profile updated!"
+  end
+
   private
 
   def user_params
