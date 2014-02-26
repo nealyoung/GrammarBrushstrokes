@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Thanks for signing up, #{@user.first_name}. Please log in below."
+      redirect_to root_path, notice: "Thanks for signing up, #{@user.first_name}."
     else
       flash[:error] = @user.errors.full_messages.first
       render "new"
