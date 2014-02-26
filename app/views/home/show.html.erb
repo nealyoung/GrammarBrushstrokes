@@ -1,33 +1,9 @@
-<span class="section-header">Home</span>
 
-<hr>
 
 <% if @current_user.role == 'teacher' %>
-  <h4>Students</h4>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Responses</th>
-        <th>Reviews</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Neal</td>
-        <td>0</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>Bafd</td>
-        <td>0</td>
-        <td>1</td>
-      </tr>
-    </tbody>
-  </table>
-
+  
   <span class="section-header">Admin</span>
-
+  <h4>Welcome, instructor. Here you can perform various administrative tasks.</h3>
   <hr>
 
   <div class="row">
@@ -40,14 +16,24 @@
     </div>
     <div class="col-md-6">
       <div class="well well-sm text-center">
+        <h4>View Current Roster</h4>
+        <p>Look at your roster for the current class.</p>
+ 	   <%= link_to 'Roster', 'users', class: 'btn btn-info btn-lg' %>      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+      <div class="well well-sm text-center">
         <h4>Delete Responses</h4>
         <p>Permanently delete all responses from students in your class</p>
         <button type="button" class="btn btn-danger btn-lg">Delete All</button>
       </div>
     </div>
-  </div>
+</div>
 <% else %>
+<span class="section-header">Home</span>
 
+<hr>
 <div class="row">
 	<div class="col-md-6">
 		<div class="well">

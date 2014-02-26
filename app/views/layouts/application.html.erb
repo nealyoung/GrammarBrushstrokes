@@ -65,7 +65,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= "#{@current_user.first_name} #{@current_user.last_name} " %><strong class="caret"></strong></a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#">Settings</a>
+                        <%= link_to "Profile", @current_user %>
                       </li>
                       <li>
                         <%= link_to "Log Out", log_out_path %>
