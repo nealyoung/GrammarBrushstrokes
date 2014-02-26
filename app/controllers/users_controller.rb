@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   # Don't force the user to sign in to create an account
   skip_before_filter :require_login, :only => [:new, :create]
   
-
   def index
     @users = User.all
   end
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
     
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Thanks for signing up, #{@user.first_name}. Please log in below."
+      redirect_to root_path, notice: "Thanks for signing up, #{@user.first_name}."
     else
       flash[:error] = @user.errors.full_messages.first
       render "new"
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    if @current_user.is_teacher?
+    if !@current_user.is_teacher?
       redirect_to root_path, notice: "Not authorized"
     end
     
@@ -37,8 +36,7 @@ class UsersController < ApplicationController
   end
 
   private
-
-
+  
   def user_params
     params.require(:user).permit(:username, :email, :first_name, :last_name, :password, :password_confirmation)
   end

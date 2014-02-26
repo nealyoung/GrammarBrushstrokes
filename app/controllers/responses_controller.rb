@@ -4,13 +4,14 @@ class ResponsesController < ApplicationController
     incomplete_responses = Response.incomplete_responses_for_user @current_user
     if incomplete_responses.any?
       flash[:alert] = 'You need to complete a previously started response'
-      @response = incomplete_responses.take
+      @response = incomplete_responses.first
       
       puts @response
     else
       @response = Response.new
       @response.user = @current_user
-      questions_in_category = Question.where(category_id: params[:category_id])
+      #questions_in_category = Question.where(category_id: params[:category_id])
+      questions_in_category = Question.all
       @response.question = questions_in_category.first(offset: rand(questions_in_category.count))
     
       @response.save
@@ -20,9 +21,31 @@ class ResponsesController < ApplicationController
   def update
     @response = Response.find(params[:id])
     
-    if @response.update_attributes(response_params)
+    update_params = response_params
+    
+    # The parameters for best and worst sentence come as strings as displayed in the dropdown, we need to convert them to numbers to store in the database
+    case update_params[:best_sentence]
+    when 'Sentence A'
+      update_params[:best_sentence] = 1
+    when 'Sentence B'
+      update_params[:best_sentence] = 2
+    when 'Sentence C'
+      update_params[:best_sentence] = 3
+    end
+    
+    case update_params[:worst_sentence]
+    when 'Sentence A'
+      update_params[:worst_sentence] = 1
+    when 'Sentence B'
+      update_params[:worst_sentence] = 2
+    when 'Sentence C'
+      update_params[:worst_sentence] = 3
+    end
+
+    if @response.update_attributes(update_params)
       redirect_to root_path, notice: 'Your response has been saved.'
     else
+      flash[:alert] = 'There was an error saving your response'
       render action: 'edit'
     end
   end
@@ -32,14 +55,22 @@ class ResponsesController < ApplicationController
   end
   
   def review
-    # Find responses awaiting review that do not belong to the current user and have not been reviewed yet
-    @response = Response.where('user_id != ? AND reviewer_id = ?', @current_user.id, nil).first
+    incomplete_reviews = Response.incomplete_reviews_for_user @current_user
     
-    if @response.nil?
-      redirect_to root_path, notice: 'There are no responses to review at this time'
+    if incomplete_reviews.any?
+      flash[:alert] = 'You need to complete a previously started review'
+      @response = incomplete_reviews.first
     else
-      # Assign the current user as the reviewer
-      @response.reviewer_id = @current_user.id
+      # Find responses awaiting review that do not belong to the current user and have not been reviewed yet
+      @response = Response.where('user_id != ? AND reviewer_id IS NULL AND sentence1 IS NOT NULL AND sentence2 IS NOT NULL AND sentence3 IS NOT NULL', @current_user.id).first
+    
+      if @response.nil?
+        redirect_to root_path, notice: 'There are no responses to review at this time'
+      else
+        # Assign the current user as the reviewer
+        @response.reviewer_id = @current_user.id
+        @response.save
+      end
     end
   end
   
