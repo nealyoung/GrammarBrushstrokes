@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   # Don't force the user to sign in to create an account
   skip_before_filter :require_login, :only => [:new, :create]
-  
+
   def index
+    if !@current_user.is_teacher?
+      redirect_to root_path, notice: "Not authorized"
+    end
     @users = User.all
   end
 
@@ -13,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.role = 'student'
-    
+
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path, notice: "Thanks for signing up, #{@user.first_name}."
@@ -22,17 +25,16 @@ class UsersController < ApplicationController
       render "new"
     end
   end
-  
+
   def show
-    #if @current_user.is_teacher?
-    #  redirect_to root_path, notice: "Not authorized"
-    #end
-    
     @user = User.find(params[:id])
+    if !@current_user.is_teacher? && @user != @current_user
+      redirect_to @current_user
+    end
   end
-  
+
   def destroy
-    
+
   end
 
   def edit
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       redirect_to root_path, notice: "Profile updated successfully!"
     else
+      flash[:error] = @user.errors.full_messages.first
       render 'edit'
     end
   end
@@ -53,8 +56,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :first_name, :last_name, :password, :password_confirmation)
-  end
-  def user_params_update
-    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation)
   end
 end
