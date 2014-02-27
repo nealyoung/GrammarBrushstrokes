@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    if !@current_user.is_teacher?
-      redirect_to root_path, notice: "Not authorized"
-    end
+    #if @current_user.is_teacher?
+    #  redirect_to root_path, notice: "Not authorized"
+    #end
     
     @user = User.find(params[:id])
   end
@@ -40,13 +40,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.new(user_params)
-    redirect_to root_path, notice: "Profile updated!"
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      redirect_to root_path, notice: "Profile updated successfully!"
+    else
+      render 'edit'
+    end
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:username, :email, :first_name, :last_name, :password, :password_confirmation)
+  end
+  def user_params_update
+    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation)
   end
 end
