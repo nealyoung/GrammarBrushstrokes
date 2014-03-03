@@ -43,3 +43,5 @@ User.create(first_name: 'Neal', last_name: 'Young', username: 'nyoung', email: '
 User.create(first_name: 'John', last_name: 'Smith', username: 'jsmith', email: 'jsmith@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 
 Course.create(title: 'Sample Course', user_id: 1)
+
+Announcement.create(content: 'Class please learn about active verbs today')
