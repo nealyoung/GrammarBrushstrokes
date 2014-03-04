@@ -9,6 +9,7 @@ class AnnouncementsController < ApplicationController
     end
 
     @announcements = Announcement.all
+    @latest_announcement = Announcement.order("updated_at").last;
   end
 
   # GET /announcements/1
@@ -47,10 +48,8 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.save
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @announcement }
       else
         format.html { render action: 'new' }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,10 +63,8 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.update(announcement_params)
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
     end
   end
