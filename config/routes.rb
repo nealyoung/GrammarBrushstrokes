@@ -3,6 +3,7 @@ GrammarBrushstrokes::Application.routes.draw do
   
   resources :responses, only: [:new, :create, :update]
   get 'responses/review' => 'responses#review', as: 'review_response'
+  get 'responses/revise' => 'responses#revise', as: 'revise_response'
   resources :categories, only: [:show]
   
   resources :users do

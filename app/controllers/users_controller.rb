@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @categories = Category.all
     @user = User.find(params[:id])
     if !@current_user.is_teacher? && @user != @current_user
       redirect_to @current_user

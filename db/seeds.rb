@@ -39,7 +39,8 @@ Question.create(image_url: 'http://i.imgur.com/7vr3d7L.jpg',
                 good_example: 'Dog',
                 bad_example: 'Dog')
 
-User.create(first_name: 'Neal', last_name: 'Young', username: 'nyoung', email: 'nealony@uci.edu', password: 'hello123', password_confirmation: 'hello123')
-User.create(first_name: 'John', last_name: 'Smith', username: 'jsmith', email: 'jsmith@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'teacher', first_name: 'Neal', last_name: 'Young', username: 'nyoung', email: 'nealony@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'student', first_name: 'John', last_name: 'Smith', username: 'jsmith', email: 'jsmith@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'student', first_name: 'Bianca', last_name: 'Tamayo', username: 'btamayo', email: 'btamayo@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 
 Course.create(title: 'Sample Course', user_id: 1)

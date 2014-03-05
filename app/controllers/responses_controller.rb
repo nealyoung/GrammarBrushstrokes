@@ -62,15 +62,23 @@ class ResponsesController < ApplicationController
       @response = incomplete_reviews.first
     else
       # Find responses awaiting review that do not belong to the current user and have not been reviewed yet
-      @response = Response.where('user_id != ? AND reviewer_id IS NULL AND sentence1 IS NOT NULL AND sentence2 IS NOT NULL AND sentence3 IS NOT NULL', @current_user.id).first
+      @response = Response.response_for_peer_review_by_user(@current_user)
     
       if @response.nil?
-        redirect_to root_path, notice: 'There are no responses to review at this time'
+        redirect_to root_path, notice: 'You have no responses to review at this time'
       else
         # Assign the current user as the reviewer
         @response.reviewer_id = @current_user.id
         @response.save
       end
+    end
+  end
+  
+  def revise
+    @response = Response.response_for_revision_by_user(@current_user)
+    
+    if @response.nil?
+      redirect_to root_path, notice: 'You have no responses to revise'
     end
   end
   

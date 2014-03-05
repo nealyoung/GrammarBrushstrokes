@@ -8,37 +8,15 @@
 
 
 <div class="row">
-  <div class="col-md-6">
-    <h4>Active Verbs</h4>
-    <div class="well well-sm text-left">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <% @categories.each do |category| %>
+    <div class="col-md-6">
+      <h4><%= category.title %></h4>
+      <div class="well well-sm text-left">
+        <% Response.where(category_id: category.id, user_id: @user.id).each do |response| %>
+          ;kashbf;oiwae;vbawiehf
+        <% end %>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <h4>Participles</h4>
-    <div class="well well-sm text-left">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <h4>Absolutes</h4>
-    <div class="well well-sm text-left">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <h4>Appositives</h4>
-    <div class="well well-sm text-left">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <h4>Adjectives Out of Order</h4>
-    <div class="well well-sm text-left">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    </div>
-  </div>
+  <% end %>
 </div>
-
-
-
