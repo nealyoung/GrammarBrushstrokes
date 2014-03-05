@@ -1,4 +1,6 @@
 GrammarBrushstrokes::Application.routes.draw do
+  resources :announcements
+
   root :to => 'home#show'
   
   resources :responses, only: [:new, :create, :update]
