@@ -48,6 +48,9 @@ end
  gem 'bcrypt-ruby', '~> 3.1.2'
 
  gem 'awesome_print'
+ 
+ # PDF Generation
+ gem 'prawn'
 
 # Use unicorn as the app server
 # gem 'unicorn'

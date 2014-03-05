@@ -2,6 +2,8 @@ class Response < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
   
+  scope :completed, -> { where('revised_sentence1 IS NOT NULL AND revised_sentence2 IS NOT NULL AND revised_sentence3 IS NOT NULL') }
+  
   def self.incomplete_responses_for_user(user)
     user.responses.where(sentence1: nil, sentence2: nil, sentence3: nil)
   end
