@@ -1,4 +1,12 @@
 GrammarBrushstrokes::Application.routes.draw do
+  get "password_resets/new"
+
+  get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "signup" => "users#new", :as => "signup"
+  resources :sessions
+  resources :password_resets
+
   resources :announcements
 
   root :to => 'home#show'
