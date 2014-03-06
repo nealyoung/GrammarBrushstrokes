@@ -52,6 +52,18 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def generate_report
+    report = Prawn::Document.new
+    
+    User.all.each do |user|
+      if user.role == 'student'
+        report.text user.full_name
+      end
+    end
+    
+    send_data report.render, type: "application/pdf", disposition: 'inline'
+  end
 
   private
 

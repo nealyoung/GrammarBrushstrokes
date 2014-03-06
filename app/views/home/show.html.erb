@@ -9,7 +9,7 @@
           <h4>Download Responses</h4>
 
           <p>Generate a PDF file containing the responses from students in your class</p>
-          <button type="button" class="btn btn-info btn-lg">Download PDF</button>
+          <%= link_to 'Download PDF', generate_report_path, class: 'btn btn-info btn-lg' %>
         </div>
       </div>
       <div class="col-md-6">
@@ -54,28 +54,25 @@
           <% end %>
           <div class="text-left">
             <% if @latest_announcement == nil %>
-                N/A
+              N/A
             <% else %>
-                <%= @latest_announcement.content %>
+              <%= @latest_announcement.content %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <div class="well">
-          <h3>Responses</h3>
-          <h4>Here's a list</h4>
-          <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-        </div>
-      </div>
+    	<div class="col-md-6">
+      		<div class="well">
+      			<h3>Revise Responses</h3>
+            <% if @response.nil? %>
+              No responses to revise
+            <% else %>
+              <%= link_to 'Revise', revise_response_path, class: 'btn btn-info btn-lg' %>
+            <% end %>
+      		</div>
+      	</div>
 
       <div class="col-md-6">
         <div class="well">

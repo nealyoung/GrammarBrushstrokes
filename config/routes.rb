@@ -16,6 +16,7 @@ GrammarBrushstrokes::Application.routes.draw do
   get 'responses/revise' => 'responses#revise', as: 'revise_response'
   resources :categories, only: [:show]
   
+  get 'users/generate_report' => 'users#generate_report', as: 'generate_report'
   resources :users do
     post :login, on: :collection, as: :login
   end
