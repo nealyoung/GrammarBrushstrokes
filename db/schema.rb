@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303225125) do
+ActiveRecord::Schema.define(version: 20140305233859) do
 
   create_table "announcements", force: true do |t|
     t.datetime "created_at"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140303225125) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "example1"
     t.string   "example2"
     t.string   "good_example"
     t.string   "bad_example"
@@ -84,6 +85,9 @@ ActiveRecord::Schema.define(version: 20140303225125) do
     t.string   "role"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end
