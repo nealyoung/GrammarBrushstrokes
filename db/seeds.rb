@@ -44,6 +44,13 @@ User.create(role: 'teacher', first_name: 'John', last_name: 'Smith', username: '
 User.create(role: 'student', first_name: 'Bianca', last_name: 'Tamayo', username: 'btamayo', email: 'btamayo@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 User.create(role: 'student', first_name: 'Derek', last_name: 'Liang', username: 'dliang2', email: 'dliang2@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 User.create(role: 'teacher', first_name: 'first', last_name: 'last', username: 'admin', email: 'admin@uci.edu', password: 'aa', password_confirmation: 'aa')
+User.create(role: 'student', first_name: 'Kim', last_name: 'Woo', username: 'kwoo', email: 'kwooo@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'student', first_name: 'Johnny', last_name: 'Donglinson', username: 'jdong', email: 'dliang2@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'teacher', first_name: 'Lang', last_name: 'McWang-Tzu', username: 'mcwang', email: 'mcwang@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'teacher', first_name: 'Bobbie', last_name: 'Yateetsy', username: 'byateet', email: 'yateetz@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+
+
+
 
 Course.create(title: 'Sample Course', teacher_id: 1)
 Course.create(title: 'No teacher course 1')
