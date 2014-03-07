@@ -22,6 +22,9 @@ GrammarBrushstrokes::Application.routes.draw do
     post :login, on: :collection, as: :login
   end
   
+  get 'courses/join' => 'courses#join', :as => 'join_course'
+  get 'courses/teach/:id' => 'courses#teach', :as => 'teach_course'
+  
   # Sessions
   get 'log_in' => 'sessions#new', :as => 'log_in'
   post 'validate_user' => 'sessions#create', :as => 'validate_user'

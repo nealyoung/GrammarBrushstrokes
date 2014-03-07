@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # Don't force the user to sign in to create an account
   skip_before_filter :require_login, :only => [:new, :create]
+  skip_before_filter :require_course_membership, :only => [:update]
 
   def index
     if !@current_user.is_teacher?
@@ -68,6 +69,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :first_name, :last_name, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :first_name, :last_name, :course_id, :password, :password_confirmation)
   end
 end

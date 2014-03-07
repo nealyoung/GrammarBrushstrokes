@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   
   def require_course_membership
     if current_user && current_user.role == 'student'
-      if !current_user.courses.any?
-        # Redirect to course join page
+      if current_user.course.nil?
+        redirect_to join_course_path
       end
     end
   end
