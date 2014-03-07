@@ -48,13 +48,16 @@ User.create(role: 'student', first_name: 'Kim', last_name: 'Woo', username: 'kwo
 User.create(role: 'student', first_name: 'Johnny', last_name: 'Donglinson', username: 'jdong', email: 'dliang2@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 User.create(role: 'teacher', first_name: 'Lang', last_name: 'McWang-Tzu', username: 'mcwang', email: 'mcwang@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 User.create(role: 'teacher', first_name: 'Bobbie', last_name: 'Yateetsy', username: 'byateet', email: 'yateetz@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'student', first_name: 'Boogie', last_name: 'Boogie', username: 'boogie', email: 'boogie@uci.edu', password: 'hello123', password_confirmation: 'hello123')
+User.create(role: 'student', first_name: 'Diana', last_name: 'Lothrington', username: 'dloth', email: 'dloth@uci.edu', password: 'hello123', password_confirmation: 'hello123')
 
 
 
 
-Course.create(title: 'Sample Course', teacher_id: 1)
-Course.create(title: 'No teacher course 1')
-Course.create(title: 'No teacher course 2')
-Course.create(title: 'John\'s Course', teacher_id: 2)
+Course.create(title: 'English 101')
+Course.create(title: 'English Verbs and Non-Verbs')
+Course.create(title: 'Grammar Improvement')
+Course.create(title: 'English with an emaphasis on writing')
+Course.create(title: 'ESL Course')
 
 Announcement.create(content: 'Class please learn about active verbs today')
