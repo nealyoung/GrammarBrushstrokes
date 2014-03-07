@@ -46,5 +46,12 @@
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
   
+  <%= check_box_tag(:instructor) %>
+  <%= label_tag(:instructor, "I am an instructor") %>
+  
+  <BR><BR>
+  
   <%= f.submit 'Submit', :class => 'btn btn-default' %>
 <% end %>
+
+  
