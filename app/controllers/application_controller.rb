@@ -4,12 +4,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :require_login, :except => [:users]
+  before_filter :require_course_membership
   
   private
   
   def require_login
     unless current_user
       redirect_to log_in_path
+    end
+  end
+  
+  def require_course_membership
+    if current_user && current_user.role == 'student'
+      if !current_user.courses.any?
+        # Redirect to course join page
+      end
     end
   end
   

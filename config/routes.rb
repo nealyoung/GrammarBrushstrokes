@@ -1,4 +1,5 @@
 GrammarBrushstrokes::Application.routes.draw do
+  get "courses/join"
   get "password_resets/new"
 
   get "login" => "sessions#new", :as => "login"

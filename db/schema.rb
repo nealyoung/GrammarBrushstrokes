@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305233859) do
+ActiveRecord::Schema.define(version: 20140307014857) do
 
   create_table "announcements", force: true do |t|
     t.datetime "created_at"
@@ -31,16 +31,9 @@ ActiveRecord::Schema.define(version: 20140305233859) do
 
   create_table "courses", force: true do |t|
     t.string   "title"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  add_index "courses", ["user_id"], name: "index_courses_on_user_id"
-
-  create_table "courses_users", id: false, force: true do |t|
-    t.integer "course_id"
-    t.integer "user_id"
+    t.integer  "teacher_id"
   end
 
   create_table "questions", force: true do |t|
@@ -87,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140305233859) do
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.integer  "course_id"
   end
 
 end
