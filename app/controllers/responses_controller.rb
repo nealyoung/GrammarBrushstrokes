@@ -43,7 +43,7 @@ class ResponsesController < ApplicationController
     end
 
     if @response.update_attributes(update_params)
-      redirect_to root_path, notice: 'Your response has been saved.'
+      redirect_to root_path, notice: 'Your response has been sent to a peer for review.'
     else
       flash[:alert] = 'There was an error saving your response'
       render action: 'edit'
