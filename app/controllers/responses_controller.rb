@@ -43,7 +43,11 @@ class ResponsesController < ApplicationController
     end
 
     if @response.update_attributes(update_params)
-      redirect_to root_path, notice: 'Your response has been sent to a peer for review.'
+      if @response.reviewer_id == @current_user.id
+        redirect_to root_path, notice: 'Your review has been sent to the author.'
+      else
+        redirect_to root_path, notice: 'Your response has been sent to a peer for review.'
+      end
     else
       flash[:alert] = 'There was an error saving your response'
       render action: 'edit'
