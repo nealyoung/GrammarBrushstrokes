@@ -18,8 +18,8 @@
         <% else %>
             <td></td>
         <% end %>
-        <td><%= announcement.created_at %></td>
-        <td><%= announcement.updated_at %></td>
+        <td><%= announcement.created_at.strftime("%b ") + ActiveSupport::Inflector.ordinalize(announcement.created_at.strftime("%d").to_i) + announcement.created_at.strftime(", %Y %I:%M %p") unless announcement.created_at.blank? %></td>
+        <td><%= announcement.updated_at.strftime("%b ") + ActiveSupport::Inflector.ordinalize(announcement.updated_at.strftime("%d").to_i) + announcement.updated_at.strftime(", %Y %I:%M %p") unless announcement.updated_at.blank? %></td>
         <td><%= announcement.content %></td>
         <td><%= link_to 'Show', announcement %></td>
         <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
