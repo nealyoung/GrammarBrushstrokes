@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
   
   before_filter :require_login, :except => [:users]
   before_filter :require_course_membership
-  
+
+  Time.zone = "Pacific Time (US & Canada)"
+
   private
   
   def require_login

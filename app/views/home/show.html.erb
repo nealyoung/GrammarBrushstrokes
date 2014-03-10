@@ -67,7 +67,7 @@ function timedRefresh(timeoutPeriod) {
         <div class="well">
           <h3>Class Announcements</h3>
           <% if @latest_announcement != nil %>
-              <%= @latest_announcement.updated_at.strftime("%b ") + ActiveSupport::Inflector.ordinalize(@latest_announcement.updated_at.strftime("%d").to_i) + @latest_announcement.updated_at.strftime(", %Y %I:%M %p") unless @latest_announcement.updated_at.blank? %>
+              <%= @time.strftime("%b ") + ActiveSupport::Inflector.ordinalize(@time.strftime("%d").to_i) + @time.strftime(", %Y %I:%M %p") unless @time.blank? %>
           <% end %>
           <div class="text-left">
             <% if @latest_announcement == nil %>

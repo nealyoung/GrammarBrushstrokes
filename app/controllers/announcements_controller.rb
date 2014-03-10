@@ -9,7 +9,8 @@ class AnnouncementsController < ApplicationController
     end
 
     @announcements = Announcement.all
-    @latest_announcement = Announcement.order("updated_at").last;
+    @latest_announcement = Announcement.order("updated_at").last
+    @time = @latest_announcement.updated_at.to_time
   end
 
   # GET /announcements/1
@@ -18,6 +19,10 @@ class AnnouncementsController < ApplicationController
     if !@current_user.is_teacher?
       redirect_to root_path
     end
+
+    @announcements = Announcement.all
+    @latest_announcement = Announcement.order("updated_at").last
+    @time = @latest_announcement.updated_at.to_time
   end
 
   # GET /announcements/new
