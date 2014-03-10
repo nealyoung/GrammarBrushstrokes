@@ -5836,4 +5836,10 @@ td.visible-print {
   color: white;
 }
 
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #CBCED2;
+  }
+
+
 /*# sourceMappingURL=bootstrap.css.map */
