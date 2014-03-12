@@ -1,106 +1,59 @@
-<% if @current_user.role == 'teacher' %>
-    <span class="section-header">Admin</span>
-    <h4>Welcome, instructor. Here you can perform various administrative tasks.</h4>
-    <hr>
+<span class="section-header">Home</span>
 
-    <div class="row">
-      <div class="col-md-6">
-        <div class="well well-sm text-center">
-          <h4>Download Responses</h4>
-
-          <p>Generate a PDF file containing the responses from students in your class</p>
-          <%= link_to 'Download PDF', generate_report_path, class: 'btn btn-info btn-lg' %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="well well-sm text-center">
-          <h4>View Current Roster</h4>
-
-          <p>Look at your roster for the current class.</p>
-          <%= link_to 'Roster', 'users', class: 'btn btn-info btn-lg' %>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="well well-sm text-center">
-          <h4>Delete Responses</h4>
-
-          <p>Permanently delete all responses from students in your class</p>
-          <button type="button" class="btn btn-danger btn-lg">Delete All</button>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="well well-sm text-center">
-          <h4>Class Announcements</h4>
-
-          <p>Access and modify announcements displayed to your class</p>
-          <%= link_to 'Edit', 'announcements', class: 'btn btn-info btn-lg' %>
-        </div>
-      </div>
-    </div>
-
-<% else %>
-    <span class="section-header">Home</span>
-    
 <html>
 <head>
-<script type="text/JavaScript">
-<!--
-function timedRefresh(timeoutPeriod) {
-  setTimeout("location.reload(true);",timeoutPeriod);
-}
-//   -->
-</script>
+  <script type="text/JavaScript">
+      <!--
+      function timedRefresh(timeoutPeriod) {
+          setTimeout("location.reload(true);", timeoutPeriod);
+      }
+      //   -->
+  </script>
 </head>
 <body onload="JavaScript:timedRefresh(10000);">
 </body>
 </html>
 
+<hr>
 
-
-    <hr>
-
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="well">
-          <h3>Class Announcements</h3>
-          <% if @latest_announcement != nil %>
-              <%= @time.strftime("%b ") + ActiveSupport::Inflector.ordinalize(@time.strftime("%d").to_i) + @time.strftime(", %Y %I:%M %p") unless @time.blank? %>
-          <% end %>
-          <div class="text-left">
-            <% if @latest_announcement == nil %>
-              N/A
-            <% else %>
-              <%= @latest_announcement.content %>
-            <% end %>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <div class="well">
+      <h3>Class Announcements</h3>
+      <% if @latest_announcement != nil %>
+          <%= @time.strftime("%b ") + ActiveSupport::Inflector.ordinalize(@time.strftime("%d").to_i) + @time.strftime(", %Y %I:%M %p") unless @time.blank? %>
+      <% end %>
+      <div class="text-left">
+        <% if @latest_announcement == nil %>
+            N/A
+        <% else %>
+            <%= @latest_announcement.content %>
+        <% end %>
       </div>
     </div>
-    <div class="row">
-    	<div class="col-md-6">
-      		<div class="well">
-      			<h3>Revise Your Sentences</h3>
-            <% if @response.nil? %>
-              No responses to revise
-            <% else %>
-              <p>Review responses your classmates have submitted! Don't forget to give constructive
-                criticism and rate each sentence.</p>
-              <%= link_to 'Revise', revise_response_path, class: 'btn btn-info btn-lg' %>
-            <% end %>
-      		</div>
-      	</div>
-
-      <div class="col-md-6">
-        <div class="well">
-          <h3>Peer Review</h3>
-
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Revise Your Sentences</h3>
+      <% if @response.nil? %>
+          No responses to revise
+      <% else %>
           <p>Review responses your classmates have submitted! Don't forget to give constructive
             criticism and rate each sentence.</p>
-          <%= link_to 'Peer Review', review_response_path, class: 'btn btn-info btn-lg' %>
-        </div>
-      </div>
+          <%= link_to 'Revise', revise_response_path, class: 'btn btn-info btn-lg' %>
+      <% end %>
     </div>
-<% end %>
+  </div>
+
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Peer Review</h3>
+
+      <p>Review responses your classmates have submitted! Don't forget to give constructive
+        criticism and rate each sentence.</p>
+      <%= link_to 'Peer Review', review_response_path, class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+</div>

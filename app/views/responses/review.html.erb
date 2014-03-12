@@ -43,24 +43,24 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label 'What was the best sentence?' %>
+      <%= f.label 'What was the most effective sentence?' %>
       <%= f.select :best_sentence, ['Sentence A', 'Sentence B', 'Sentence C'] %>
     </div>
     
     <div class="form-group">
-      <%= f.label 'Why did you think this was the best sentence?' %>
+      <%= f.label 'Why did you think this was the most effective sentence?' %>
       <%= f.text_field :best_sentence_feedback, class: 'form-control' %>
     </div>
 
     <hr>
     
     <div class="form-group">
-      <%= f.label 'What was the worst sentence?' %>
+      <%= f.label 'What was the least effective sentence?' %>
       <%= f.select :worst_sentence, ['Sentence A', 'Sentence B', 'Sentence C'] %>
     </div>
     
     <div class="form-group">
-      <%= f.label 'Why did you think this was the worst sentence?' %>
+      <%= f.label 'Why did you think this was the least effective sentence?' %>
       <%= f.text_field :worst_sentence_feedback, class: 'form-control' %>
     </div>
 
