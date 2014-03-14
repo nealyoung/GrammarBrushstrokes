@@ -2,6 +2,10 @@ class Response < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
   
+  validates_presence_of :sentence1
+  validates_presence_of :sentence2
+  validates_presence_of :sentence3
+  
   scope :completed, -> { where('revised_sentence1 IS NOT NULL AND revised_sentence2 IS NOT NULL AND revised_sentence3 IS NOT NULL') }
   
   def self.incomplete_responses_for_user(user)
@@ -13,6 +17,7 @@ class Response < ActiveRecord::Base
   end
   
   def self.response_for_peer_review_by_user(user)
+    classmate_user_ids = user.course.students.where('id != ?', user.id).ids
     Response.where('user_id != ? AND reviewer_id IS NULL AND sentence1 IS NOT NULL AND sentence2 IS NOT NULL AND sentence3 IS NOT NULL', user.id).first
   end
   

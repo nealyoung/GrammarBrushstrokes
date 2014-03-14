@@ -14,7 +14,7 @@ class ResponsesController < ApplicationController
       questions_in_category = Question.all
       @response.question = questions_in_category.first(offset: rand(questions_in_category.count))
     
-      @response.save
+      @response.save(validate: false)
     end    
   end
 
@@ -50,7 +50,7 @@ class ResponsesController < ApplicationController
       end
     else
       flash[:alert] = 'There was an error saving your response'
-      render action: 'edit'
+      render action: 'new'
     end
   end
   

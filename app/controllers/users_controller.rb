@@ -1,3 +1,5 @@
+require "open-uri"
+
 class UsersController < ApplicationController
   # Don't force the user to sign in to create an account
   skip_before_filter :require_login, :only => [:new, :create]
@@ -34,18 +36,18 @@ class UsersController < ApplicationController
       redirect_to @current_user
     end
   end
-
+  
   def destroy
-
+    
   end
-
+  
   def edit
     @user = User.find(params[:id])
   end
-
+  
   def update
     @user = User.find(params[:id])
-
+    
     if @user.update_attributes(user_params)
       redirect_to root_path, notice: "Profile updated successfully!"
     else
@@ -55,15 +57,31 @@ class UsersController < ApplicationController
   end
   
   def generate_report
-    report = Prawn::Document.new
-    
-    User.all.each do |user|
-      if user.role == 'student'
-        report.text user.full_name
+    if @current_user.is_teacher?
+      report = Prawn::Document.new
+      
+      report.text @current_user.taught_course.title, style: :bold, size: 30, align: :center
+      
+      report.text DateTime.now.strftime("Generated on %m/%d/%Y at %I:%M%p"), style: :italic, size: 14, align: :center
+      
+      @current_user.taught_course.students.each do |student|
+        if student.responses.any?
+          report.text student.full_name, style: :bold
+        
+          student.responses.each do |response|
+            report.image open(response.question.image_url), width: 200
+            report.move_down 5
+            report.text "Sentence 1: " + response.sentence1
+            report.text "Sentence 2: " + response.sentence2
+            report.text "Sentence 3: " + response.sentence3
+          end
+        end
       end
+      
+      send_data report.render, type: "application/pdf", disposition: 'inline'
+    else
+      redirect_to root_path, alert: 'Not authorized'
     end
-    
-    send_data report.render, type: "application/pdf", disposition: 'inline'
   end
 
   private

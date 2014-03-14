@@ -26,6 +26,59 @@
 </div>
 </div>
 
+
+
+<%= image_tag @category.image_url, class: 'center-div img-responsive img-thumbnail ' %>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Effective
+  </div>
+  
+  <div class="panel-body">
+    <%= @category.good_example %>
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    Less Effective
+  </div>
+  
+  <div class="panel-body">
+<%= @category.bad_example %>
+</div>
+</div>
+
+
+
+
+
+<%= image_tag @category.image_url, class: 'center-div img-responsive img-thumbnail ' %>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Effective
+  </div>
+  
+  <div class="panel-body">
+    <%= @category.good_example %>
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    Less Effective
+  </div>
+  
+  <div class="panel-body">
+<%= @category.bad_example %>
+</div>
+</div>
+
+
+
+
 <div>
   <%= link_to 'Try it yourself!', new_response_path(category_id: @category.id), class: 'btn btn-lg btn-success' %>
 </div>
