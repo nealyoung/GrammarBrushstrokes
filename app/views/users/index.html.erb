@@ -12,7 +12,7 @@
       <tr>
         <td><%= link_to user.full_name, url_for(user) %></td>
         <td><%= user.responses.size %></td>
-        <td>number of reviews</td>
+        <td><%= Response.where(reviewer_id: user.id).count %></td>
       </tr>
     <% end %>
   </tbody>
