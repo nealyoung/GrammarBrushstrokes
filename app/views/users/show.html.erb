@@ -18,6 +18,39 @@
           <% category_responses.each do |response| %>
             <ul class="list-group">
               <%= image_tag response.question.image_url, class: 'img-thumbnail center-div' %>
+              
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="badge">Sentence A</span>
+                  <%= response.sentence1 %>
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">Sentence A Revised</span>
+                  <%= response.revised_sentence1 %>
+                </li>
+              </ul>
+              
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="badge">Sentence B</span>
+                  <%= response.sentence2 %>
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">Sentence B Revised</span>
+                  <%= response.revised_sentence2 %>
+                </li>
+              </ul>
+              
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span class="badge">Sentence C</span>
+                  <%= response.sentence3 %>
+                </li>
+                <li class="list-group-item">
+                  <span class="badge">Sentence C Revised</span>
+                  <%= response.revised_sentence3 %>
+                </li>
+              </ul>
             </ul>
           <% end %>
         <% else %>

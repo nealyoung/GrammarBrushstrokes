@@ -65,15 +65,20 @@ class UsersController < ApplicationController
       report.text DateTime.now.strftime("Generated on %m/%d/%Y at %I:%M%p"), style: :italic, size: 14, align: :center
       
       @current_user.taught_course.students.each do |student|
-        if student.responses.any?
+        if student.responses.completed.any?
           report.text student.full_name, style: :bold
         
-          student.responses.each do |response|
+          student.responses.completed.each do |response|
             report.image open(response.question.image_url), width: 200
             report.move_down 5
             report.text "Sentence 1: " + response.sentence1
-            report.text "Sentence 2: " + response.sentence2
-            report.text "Sentence 3: " + response.sentence3
+            report.text "Revised Sentence 1: " + response.revised_sentence1
+
+            report.text "Sentence 2: " + response.sentence1
+            report.text "Revised Sentence 2: " + response.revised_sentence1
+            
+            report.text "Sentence 3: " + response.sentence2
+            report.text "Revised Sentence 3: " + response.revised_sentence3
           end
         end
       end
