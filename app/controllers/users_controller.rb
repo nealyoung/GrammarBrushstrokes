@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     if !@current_user.is_teacher?
       redirect_to root_path, notice: "Not authorized"
     end
-    @users = User.all
+    
+    @users = @current_user.taught_course.students
   end
 
   def new
