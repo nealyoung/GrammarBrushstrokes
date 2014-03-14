@@ -4,4 +4,10 @@ class HomeController < ApplicationController
     @latest_announcement = Announcement.order("updated_at").last
     @time = @latest_announcement.updated_at.to_time
   end
+
+  def admin
+    if @current_user.role != "teacher"
+      redirect_to root_path
+    end
+  end
 end

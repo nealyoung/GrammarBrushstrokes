@@ -11,6 +11,8 @@ GrammarBrushstrokes::Application.routes.draw do
   resources :announcements
 
   root :to => 'home#show'
+
+  get 'admin' => 'home#admin', as: 'admin_home'
   
   resources :responses, only: [:new, :create, :update]
   get 'responses/review' => 'responses#review', as: 'review_response'
