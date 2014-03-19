@@ -7,7 +7,7 @@
 <hr>
 
 <%= form_for @response do |f| %>
-  <h3>Now, you try!</h3>
+  <h4><%= "Practice writing three sample sentences about the picture above, using the #{@response.category.title} brushstroke" %></h4>
   
   <div class="well well-small">
     <% if @response.errors.any? %>

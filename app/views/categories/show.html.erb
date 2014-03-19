@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  $(document).ready(function () {
+  $(document).ready(function() {
     var currentExample = 1;
     var elem = document.getElementById(1);
     $(elem).show();
@@ -36,13 +36,11 @@
   });
 </script>
 
-
-<span class="section-header"><%= @category.title %></span>
-
+<h2><%= @category.title %></h2>
 
 <p><%= @category.description %></p>
-<br>
 
+<hr>
 	
 <div id="1" class="example">
 	<h3>Example 1</h3>	

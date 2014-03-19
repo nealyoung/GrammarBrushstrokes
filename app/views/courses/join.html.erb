@@ -1,4 +1,9 @@
-<span class="section-header">Join Course</span>
+<% if @current_user.is_teacher? %>
+  <%= link_to "Create Course", teach_course_path(id: 1), class: 'btn btn-default pull-right' %>
+  <span class="section-header">Select a Course to Teach</span>
+<% else %>
+  <span class="section-header">Join Course</span>
+<% end %>
 
 <hr>
 
@@ -26,6 +31,10 @@
   <% end %>
 <% else %>
   <% @courses_without_teachers.each do |course| %>
-    <%= link_to course.title, teach_course_path(id: course.id) %>
+    <ul>
+      <li>
+        <%= link_to course.title, teach_course_path(id: course.id) %>
+      </li>
+    </ul>
   <% end %>
 <% end %>

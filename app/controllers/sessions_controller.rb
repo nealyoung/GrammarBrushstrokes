@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_login
+  skip_before_filter :require_course_membership
   
   def create
     user = User.find_by_username(params[:username])
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
       else
         cookies[:auth_token] = user.auth_token
       end
-      #session[:user_id] = user.id
+
       redirect_to root_path
     else      
       flash.now.alert = "Invalid email or password."
@@ -19,7 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    #session[:user_id] = nil
     cookies.delete(:auth_token)
     redirect_to root_url, :notice => "Successfully logged out!"
   end

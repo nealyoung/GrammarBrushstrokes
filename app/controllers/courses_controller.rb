@@ -28,11 +28,17 @@ class CoursesController < ApplicationController
     
     course = Course.find(params[:id])
     course.teacher = @current_user
+    @current_user.course = course
+    
     if course.save
       redirect_to root_path, notice: "You are now teaching #{course.title}"
     else
       redirect_to root_path, alert: "Error adding course"
     end
+  end
+  
+  def remove_student
+    
   end
   
   private

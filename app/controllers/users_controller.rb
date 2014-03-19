@@ -19,7 +19,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.role = 'student'
+    
+    if params[:instructor]
+      @user.role = 'teacher'
+    else
+      @user.role = 'student'
+    end
 
     if @user.save
       session[:user_id] = @user.id

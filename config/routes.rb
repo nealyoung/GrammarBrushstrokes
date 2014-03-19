@@ -24,8 +24,10 @@ GrammarBrushstrokes::Application.routes.draw do
     post :login, on: :collection, as: :login
   end
   
-  get 'courses/join' => 'courses#join', :as => 'join_course'
-  get 'courses/teach/:id' => 'courses#teach', :as => 'teach_course'
+  resources :courses, only: [:new, :create]
+  get 'courses/join' => 'courses#join', as: 'join_course'
+  get 'courses/teach/:id' => 'courses#teach', as: 'teach_course'
+  get 'courses/remove_student/:id' => 'courses#remove_student', as: 'remove_student_path'
   
   # Sessions
   get 'log_in' => 'sessions#new', :as => 'log_in'

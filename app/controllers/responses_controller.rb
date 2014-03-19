@@ -1,22 +1,19 @@
 class ResponsesController < ApplicationController
   def new
-    # Before allowing the student to create a new response, we check if they have previously opened but incomplete responses
+    # If the student has an incomplete response that they have navigated away from, delete it before 
     incomplete_responses = Response.incomplete_responses_for_user @current_user
     if incomplete_responses.any?
-      flash[:alert] = 'You need to complete a previously started response'
-      @response = incomplete_responses.first
-      
-      puts @response
-    else
-      @response = Response.new
-      @response.user = @current_user
-      @response.category = Category.find(params[:category_id])
-      
-      # Randomly assign a question to the response
-      @response.question = Question.all.first(offset: rand(Question.all.count))
+      incomplete_responses.destroy_all
+    end
     
-      @response.save(validate: false)
-    end    
+    @response = Response.new
+    @response.user = @current_user
+    @response.category = Category.find(params[:category_id])
+    
+    # Randomly assign a question to the response
+    @response.question = Question.all.first(offset: rand(Question.all.count))
+  
+    @response.save(validate: false)
   end
 
   def update

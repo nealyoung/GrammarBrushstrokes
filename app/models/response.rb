@@ -3,9 +3,9 @@ class Response < ActiveRecord::Base
   belongs_to :question
   belongs_to :category
   
-  validates_presence_of :sentence1
-  validates_presence_of :sentence2
-  validates_presence_of :sentence3
+  validates_presence_of :sentence1, message: "Sentence A cannot be blank"
+  validates_presence_of :sentence2, message: "Sentence B cannot be blank"
+  validates_presence_of :sentence3, message: "Sentence C cannot be blank"
   
   scope :completed, -> { where('revised_sentence1 IS NOT NULL AND revised_sentence2 IS NOT NULL AND revised_sentence3 IS NOT NULL') }
   

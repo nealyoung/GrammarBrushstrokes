@@ -46,19 +46,19 @@
                   <%= link_to "Home", root_path %>
                 </li>
                 
-                <% Category.all.each do |category| %>
+                <% Category.all.order(:title).each do |category| %>
                   <li>
                     <%= link_to category.title, url_for(category) %>
                   </li>
                 <% end %>
-
+                
                 <% if @current_user && @current_user.role == 'teacher' %>
                     <li>
                       <%= link_to "Control Panel", admin_home_path %>
                     </li>
                 <% end %>
               </ul>
-
+              
               <% if @current_user %>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
