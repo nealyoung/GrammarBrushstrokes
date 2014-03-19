@@ -45,21 +45,13 @@
                 <li>
                   <%= link_to "Home", root_path %>
                 </li>
-                <li>
-                  <%= link_to "Active Verbs", url_for(Category.find_by_title("Active Verbs")) %>
-                </li>
-                <li>
-                  <%= link_to "Participles", url_for(Category.find_by_title("Participles")) %>
-                </li>
-                <li>
-                  <%= link_to "Absolutes", url_for(Category.find_by_title("Absolutes")) %>
-                </li>
-                <li>
-                  <%= link_to "Appositives", url_for(Category.find_by_title("Appositives")) %>
-                </li>
-                <li>
-                  <%= link_to "Adjectives Out of Order", url_for(Category.find_by_title("Adjectives Out of Order")) %>
-                </li>
+                
+                <% Category.all.each do |category| %>
+                  <li>
+                    <%= link_to category.title, url_for(category) %>
+                  </li>
+                <% end %>
+
                 <% if @current_user && @current_user.role == 'teacher' %>
                     <li>
                       <%= link_to "Control Panel", admin_home_path %>
@@ -89,7 +81,7 @@
           </nav>
           
           <% if flash[:notice] %>
-            <div class="alert alert-success">
+            <div class="alert alert-info">
               <%= flash[:notice] %>
               <a href="#" class="close" data-dismiss="alert">&times;</a>
             </div>
