@@ -9,6 +9,10 @@ class Response < ActiveRecord::Base
   
   scope :completed, -> { where('revised_sentence1 IS NOT NULL AND revised_sentence2 IS NOT NULL AND revised_sentence3 IS NOT NULL') }
   
+  def completed?
+    revised_sentence1 != nil && revised_sentence2 != nil revised_sentence3 != nil
+  end
+  
   def self.incomplete_responses_for_user(user)
     user.responses.where(sentence1: nil, sentence2: nil, sentence3: nil)
   end

@@ -44,8 +44,11 @@ class ResponsesController < ApplicationController
     end
 
     if @response.update_attributes(update_params)
+      # If the update is caused by a response submission, a review, or a revision, we need to show different messages
       if @response.reviewer_id == @current_user.id
         redirect_to root_path, notice: 'Your review has been sent to the author.'
+      elsif @response.completed?
+        redirect_to root_path, notice: 'Your response has been submitted to your teacher.'
       else
         redirect_to root_path, notice: 'Your response has been sent to a peer for review.'
       end
