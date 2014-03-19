@@ -1,6 +1,7 @@
 class Response < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
+  belongs_to :category
   
   validates_presence_of :sentence1
   validates_presence_of :sentence2

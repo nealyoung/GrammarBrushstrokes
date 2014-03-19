@@ -10,9 +10,10 @@ class ResponsesController < ApplicationController
     else
       @response = Response.new
       @response.user = @current_user
-      #questions_in_category = Question.where(category_id: params[:category_id])
-      questions_in_category = Question.all
-      @response.question = questions_in_category.first(offset: rand(questions_in_category.count))
+      @response.category = Category.find(params[:category_id])
+      
+      # Randomly assign a question to the response
+      @response.question = Question.all.first(offset: rand(Question.all.count))
     
       @response.save(validate: false)
     end    

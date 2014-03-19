@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314205912) do
+ActiveRecord::Schema.define(version: 20140319025321) do
 
   create_table "announcements", force: true do |t|
     t.datetime "created_at"
@@ -71,8 +71,10 @@ ActiveRecord::Schema.define(version: 20140314205912) do
     t.string   "worst_sentence_feedback"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
+  add_index "responses", ["category_id"], name: "index_responses_on_category_id"
   add_index "responses", ["user_id"], name: "index_responses_on_user_id"
 
   create_table "users", force: true do |t|
